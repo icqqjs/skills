@@ -28,7 +28,7 @@ Load the corresponding reference file based on what the user wants:
 | 设置：昵称、头像、签名、群名片、群头衔 | Settings | [settings.md](./references/settings.md) |
 | 好友/群请求处理 | Requests | [requests.md](./references/requests.md) |
 | 群文件：目录管理 | Group Files | [gfs.md](./references/gfs.md) |
-| 登录、状态、OCR、黑名单 | General | [general.md](./references/general.md) |
+| 登录、状态、OCR、黑名单、Webhook | General | [general.md](./references/general.md) |
 
 ## Global Notes
 
