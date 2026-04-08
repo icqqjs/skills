@@ -6,15 +6,28 @@
 
 当你在支持 Skills 的 AI 代理平台中描述 QQ 相关操作时，此技能会自动激活，引导代理加载对应的参考文档并在终端中执行正确的 `icqq` 命令。
 
-### 兼容平台
+### 安装
 
-本技能采用通用的 `SKILL.md` + YAML frontmatter 格式，兼容以下支持 Skills 的平台：
+推荐使用 [skills CLI](https://github.com/nickstefan/skills) 一键安装：
+
+```bash
+npx skills add https://github.com/icqqjs/skills
+```
+
+该命令会自动检测当前环境中的 AI 代理平台，并将技能文件安装到正确位置。
+
+<details>
+<summary>手动安装</summary>
+
+将 `icqq/` 目录（包含 `SKILL.md` 和 `references/`）复制到对应平台的 skills 目录中：
 
 | 平台 | 安装位置 |
 |------|----------|
 | [GitHub Copilot](https://code.visualstudio.com/docs/copilot/copilot-extensibility-overview) (VS Code) | `~/.copilot/skills/icqq/` 或项目内 `.copilot/skills/icqq/` |
 | [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/skills) | `~/.claude/skills/icqq/` 或项目内 `.claude/skills/icqq/` |
 | 其他兼容平台 | 参考各平台 Skills 文档放置 `SKILL.md` 及 `references/` 目录 |
+
+</details>
 
 ### 触发示例
 
@@ -30,7 +43,7 @@
 | Node.js | >= 22 |
 | [`@icqqjs/cli`](https://github.com/icqqjs/cli/pkgs/npm/cli) | 已全局安装（`npm i -g @icqqjs/cli`） |
 | QQ 账号 | 已通过 `icqq login` 登录并保持守护进程运行 |
-| AI 代理平台 | 任一支持 Skills 的平台（见上方兼容平台列表） |
+| AI 代理平台 | 任一支持 Skills 的平台（见上方安装说明） |
 
 ## 目录结构
 
