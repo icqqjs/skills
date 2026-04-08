@@ -1,10 +1,20 @@
-# icqq Copilot Skill
+# icqq Skill
 
-一个 [GitHub Copilot 自定义技能](https://code.visualstudio.com/docs/copilot/copilot-extensibility-overview)，让 AI 代理能够通过 `icqq` CLI 操作 QQ 账号——发消息、管理好友与群组、处理请求、管理群文件等。
+一个 AI 代理技能（Agent Skill），让 AI 代理能够通过 `icqq` CLI 操作 QQ 账号——发消息、管理好友与群组、处理请求、管理群文件等。
 
 ## 概述
 
-当你在 VS Code 中使用 Copilot Chat（Agent 模式）并描述 QQ 相关操作时，此技能会自动激活，引导代理加载对应的参考文档并在终端中执行正确的 `icqq` 命令。
+当你在支持 Skills 的 AI 代理平台中描述 QQ 相关操作时，此技能会自动激活，引导代理加载对应的参考文档并在终端中执行正确的 `icqq` 命令。
+
+### 兼容平台
+
+本技能采用通用的 `SKILL.md` + YAML frontmatter 格式，兼容以下支持 Skills 的平台：
+
+| 平台 | 安装位置 |
+|------|----------|
+| [GitHub Copilot](https://code.visualstudio.com/docs/copilot/copilot-extensibility-overview) (VS Code) | `~/.copilot/skills/icqq/` 或项目内 `.copilot/skills/icqq/` |
+| [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/skills) | `~/.claude/skills/icqq/` 或项目内 `.claude/skills/icqq/` |
+| 其他兼容平台 | 参考各平台 Skills 文档放置 `SKILL.md` 及 `references/` 目录 |
 
 ### 触发示例
 
@@ -20,7 +30,7 @@
 | Node.js | >= 22 |
 | [`@icqqjs/cli`](https://github.com/icqqjs/cli/pkgs/npm/cli) | 已全局安装（`npm i -g @icqqjs/cli`） |
 | QQ 账号 | 已通过 `icqq login` 登录并保持守护进程运行 |
-| VS Code | 安装了 GitHub Copilot Chat 扩展 |
+| AI 代理平台 | 任一支持 Skills 的平台（见上方兼容平台列表） |
 
 ## 目录结构
 
@@ -42,7 +52,7 @@ skills/icqq/
 
 ### 1. 技能匹配
 
-`SKILL.md` 的 YAML frontmatter 中定义了 `description` 字段，Copilot 根据该描述判断用户意图是否匹配此技能：
+`SKILL.md` 的 YAML frontmatter 中定义了 `description` 字段，AI 代理根据该描述判断用户意图是否匹配此技能：
 
 ```yaml
 description: 'Operate QQ account via icqq CLI. Use when asked to: send QQ message,
@@ -68,7 +78,7 @@ description: 'Operate QQ account via icqq CLI. Use when asked to: send QQ messag
 ### 3. 执行流程
 
 ```
-用户描述操作 → Copilot 匹配 SKILL.md → 读取对应 references/*.md → 终端执行 icqq 命令 → 返回结果
+用户描述操作 → 代理匹配 SKILL.md → 读取对应 references/*.md → 终端执行 icqq 命令 → 返回结果
 ```
 
 关键设计决策：
