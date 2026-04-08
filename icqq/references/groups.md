@@ -27,6 +27,7 @@ icqq group quit <gid>                 # Quit group
 ## Social
 
 ```
+icqq group send <gid> <message>         # Send group message
 icqq group poke <gid> <uid>           # Poke group member
 icqq group invite <gid> <uid>         # Invite friend to group
 icqq group sign <gid>                 # Group check-in
@@ -45,6 +46,7 @@ icqq group essence remove <message_id>     # Remove essence message
 ```bash
 icqq group list
 icqq group view 67890
+icqq group send 67890 "大家好"
 icqq group member list 67890
 icqq group member view 67890 12345
 icqq group mute 67890 12345 -d 3600

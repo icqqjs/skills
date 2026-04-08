@@ -23,18 +23,19 @@ Load the corresponding reference file based on what the user wants:
 | Intent | Module | Reference |
 |--------|--------|-----------|
 | 发消息、撤回、聊天记录 | Messaging | [messaging.md](./references/messaging.md) |
-| 好友列表、查看、戳一戳、点赞、删除好友、备注 | Friends | [friends.md](./references/friends.md) |
-| 群管理：禁言、踢人、公告、邀请、签到、精华、成员 | Groups | [groups.md](./references/groups.md) |
+| 好友列表、查看、发消息、戳一戳、点赞、删除、备注 | Friends | [friends.md](./references/friends.md) |
+| 群管理：发消息、禁言、踢人、公告、邀请、签到、精华、成员 | Groups | [groups.md](./references/groups.md) |
 | 设置：昵称、头像、签名、群名片、群头衔 | Settings | [settings.md](./references/settings.md) |
 | 好友/群请求处理 | Requests | [requests.md](./references/requests.md) |
 | 群文件：目录管理 | Group Files | [gfs.md](./references/gfs.md) |
-| 登录、状态、OCR、黑名单、Webhook | General | [general.md](./references/general.md) |
+| 登录、状态、配置、OCR、黑名单、Webhook、通知 | General | [general.md](./references/general.md) |
 
 ## Global Notes
 
 - All `<uid>` = QQ number (integer), `<gid>` = group number (integer)
 - Daemon must run first: `icqq login`
-- **Use `icqq send` for non-interactive messaging** (agent-friendly); `icqq friend chat` / `icqq group chat` are interactive
+- Multi-instance: use `-u <uin>` or `ICQQ_CURRENT_UIN` env to specify account; defaults to `config.defaultUin`
+- **Use `icqq friend send` / `icqq group send` for non-interactive messaging** (agent-friendly); `icqq friend chat` / `icqq group chat` are interactive
 - CQ code syntax in messages: `[face:id]` `[image:path]` `[at:uid]` `[at:all]` `[dice]` `[rps]`
-- Quote strings with spaces: `icqq send private 12345 "hello world"`
+- Quote strings with spaces: `icqq friend send 12345 "hello world"`
 - Chain batch ops with `&&`

@@ -3,11 +3,11 @@
 ## Send Message (non-interactive)
 
 ```
-icqq send private <uid> <message>    # Send private message
-icqq send group <gid> <message>      # Send group message
+icqq friend send <uid> <message>    # Send private message
+icqq group send <gid> <message>     # Send group message
 ```
 
-**IMPORTANT**: Always use `icqq send` for agent operations (non-interactive). The `icqq friend chat` / `icqq group chat` commands enter interactive mode that the agent cannot operate.
+**IMPORTANT**: Always use `icqq friend send` / `icqq group send` for agent operations (non-interactive). The `icqq friend chat` / `icqq group chat` commands enter interactive mode that the agent cannot operate.
 
 ## CQ Code Syntax
 
@@ -47,9 +47,9 @@ icqq group chat <gid>      # Enter group chat mode
 ## Examples
 
 ```bash
-icqq send private 12345 "你好"
-icqq send group 67890 "大家好[face:21]"
-icqq send private 12345 "[image:https://example.com/pic.jpg]看这个"
+icqq friend send 12345 "你好"
+icqq group send 67890 "大家好[face:21]"
+icqq friend send 12345 "[image:https://example.com/pic.jpg]看这个"
 icqq friend chat history 12345 -c 50
 icqq group chat history 67890
 icqq recall abc123
