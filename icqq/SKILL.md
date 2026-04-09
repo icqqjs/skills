@@ -22,13 +22,13 @@ Load the corresponding reference file based on what the user wants:
 
 | Intent | Module | Reference |
 |--------|--------|-----------|
-| 发消息、撤回、聊天记录 | Messaging | [messaging.md](./references/messaging.md) |
-| 好友列表、查看、发消息、戳一戳、点赞、删除、备注 | Friends | [friends.md](./references/friends.md) |
-| 群管理：发消息、禁言、踢人、公告、邀请、签到、精华、成员 | Groups | [groups.md](./references/groups.md) |
-| 设置：昵称、头像、签名、群名片、群头衔 | Settings | [settings.md](./references/settings.md) |
+| 发消息、撤回、聊天记录、消息详情、合并转发 | Messaging | [messaging.md](./references/messaging.md) |
+| 好友列表、查看、发消息、戳一戳、点赞、删除、备注、文件、好友分组 | Friends | [friends.md](./references/friends.md) |
+| 群管理：发消息、禁言、踢人、公告、邀请、签到、精华、成员、表态 | Groups | [groups.md](./references/groups.md) |
+| 设置：昵称、头像、签名、群名片、群头衔、加群方式、匿名 | Settings | [settings.md](./references/settings.md) |
 | 好友/群请求处理 | Requests | [requests.md](./references/requests.md) |
-| 群文件：目录管理 | Group Files | [gfs.md](./references/gfs.md) |
-| 登录、状态、配置、OCR、黑名单、Webhook、通知 | General | [general.md](./references/general.md) |
+| 群文件：目录管理、上传下载、转发 | Group Files | [gfs.md](./references/gfs.md) |
+| 登录、状态、配置、OCR、黑名单、Webhook、通知、UID转换、陌生人、漫游表情、缓存、重载、频道、补全 | General | [general.md](./references/general.md) |
 
 ## Global Notes
 

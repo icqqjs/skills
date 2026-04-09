@@ -61,6 +61,66 @@ icqq notify on                 # Enable system notifications
 icqq notify off                # Disable system notifications
 ```
 
+## Conversion
+
+```
+icqq convert uid <qq>          # QQ number to UID
+icqq convert uin <uid>         # UID to QQ number
+```
+
+## Keys & URLs
+
+```
+icqq get client-key            # Get ClientKey
+icqq get pskey                 # Get PSKey
+icqq get video-url <vid>       # Get video download URL
+```
+
+## Stranger
+
+```
+icqq stranger view <uid>           # View stranger profile
+icqq stranger status <uid>         # Check online status
+icqq stranger add-setting <uid>    # Check add-friend settings
+```
+
+## Roaming Emoji (Stamps)
+
+```
+icqq stamp list                # List roaming emojis
+icqq stamp delete              # Delete roaming emoji
+```
+
+## Cache & Reload
+
+```
+icqq cache clean               # Clear cache
+icqq reload friends            # Refresh friend list
+icqq reload groups             # Refresh group list
+icqq reload blacklist          # Reload blacklist
+icqq reload guilds             # Reload guild list
+icqq reload strangers          # Reload stranger list
+```
+
+## Guild (Channel)
+
+```
+icqq guild list                # List guilds
+icqq guild info                # View guild info
+icqq guild channels            # List subchannels
+icqq guild members             # List guild members
+icqq guild send                # Send channel message
+icqq guild recall              # Recall channel message
+icqq guild share               # Share guild post
+icqq guild forum-url           # Get forum URL
+```
+
+## Shell Completion
+
+```
+icqq completion [shell]        # Generate shell completion script (bash/zsh/fish)
+```
+
 ## Examples
 
 ```bash
@@ -75,4 +135,10 @@ icqq -u 12345 profile
 icqq ocr ./screenshot.png
 icqq webhook set https://example.com/hook
 icqq notify on
+icqq convert uid 12345
+icqq stranger view 12345
+icqq stamp list
+icqq cache clean
+icqq reload friends
+icqq guild list
 ```

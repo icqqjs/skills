@@ -22,6 +22,9 @@ icqq group set title <gid> <uid> <title>      # Set member special title
 icqq group set admin <gid> <uid>              # Set admin
 icqq group set admin <gid> <uid> -r           # Remove admin
 icqq group set remark <gid> <remark>          # Set group remark
+icqq group set anonymous <gid>                # Toggle anonymous
+icqq group set join-type <gid> <type>         # Set join method
+icqq group set rate-limit <gid> <limit>       # Set message rate limit
 ```
 
 ## Examples

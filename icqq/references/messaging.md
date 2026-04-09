@@ -30,6 +30,14 @@ Mixed example: `icqq send group 67890 "你好[face:178]看看[image:/tmp/pic.jpg
 icqq recall <message_id>
 ```
 
+## Message Operations
+
+```
+icqq msg get <message_id>              # View message details
+icqq msg mark-read <message_id>        # Mark message as read
+icqq forward get <message_id>          # View forwarded message content
+```
+
 ## Chat History
 
 ```
