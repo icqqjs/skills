@@ -8,9 +8,9 @@ icqq login -r                  # Quick reconnect using saved token
 icqq login -q <uid> -r         # Quick reconnect specific account
 icqq status                    # Check all daemon/account statuses
 icqq stop                      # Stop the daemon
-icqq stop <uid>                # Stop specific daemon
+icqq stop <uin>                # Stop specific daemon
 icqq switch                    # Switch current account (interactive)
-icqq switch <uid>              # Switch to specific account
+icqq switch <uin>              # Switch to specific account
 icqq profile                   # View current account profile
 icqq requests                  # View pending friend/group requests
 ```
@@ -102,17 +102,18 @@ icqq reload guilds             # Reload guild list
 icqq reload strangers          # Reload stranger list
 ```
 
-## Guild (Channel)
+## Guild (Server & Channel)
 
 ```
-icqq guild list                # List guilds
-icqq guild info                # View guild info
-icqq guild channels            # List subchannels
-icqq guild members             # List guild members
-icqq guild send                # Send channel message
-icqq guild recall              # Recall channel message
-icqq guild share               # Share guild post
-icqq guild forum-url           # Get forum URL
+icqq guild list                                                # List guilds
+icqq guild info <guild_id>                                     # View guild info
+icqq guild members <guild_id>                                  # List guild members
+icqq guild channel list <guild_id>                             # List subchannels
+icqq guild channel send <guild_id> <channel_id> <message>      # Send channel message
+icqq guild channel chat <guild_id> <channel_id>                # Interactive channel chat
+icqq guild channel recall <guild_id> <channel_id> <seq>        # Recall channel message
+icqq guild channel share <guild_id> <channel_id> <url> <title> # Share post link
+icqq guild channel forum-url <guild_id> <channel_id> <forum_id> # Get forum URL
 ```
 
 ## Shell Completion
