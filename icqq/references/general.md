@@ -9,6 +9,8 @@ icqq login -q <uid> -r         # Quick reconnect specific account
 icqq status                    # Check all daemon/account statuses
 icqq stop                      # Stop the daemon
 icqq stop <uid>                # Stop specific daemon
+icqq switch                    # Switch current account (interactive)
+icqq switch <uid>              # Switch to specific account
 icqq profile                   # View current account profile
 icqq requests                  # View pending friend/group requests
 ```
@@ -17,14 +19,14 @@ icqq requests                  # View pending friend/group requests
 
 ```
 icqq config get                # View all config
-icqq config get <key>          # View specific config key (defaultUin, webhookUrl, notifyEnabled)
+icqq config get <key>          # View specific config key (currentUin, webhookUrl, notifyEnabled)
 icqq config set <key> <value>  # Set config value
 ```
 
 ## Multi-Instance
 
 Use `-u <uin>` global flag or `ICQQ_CURRENT_UIN` env to target a specific account.
-Default falls back to `config.defaultUin`.
+Default falls back to `config.currentUin`.
 
 ```
 icqq -u 12345 profile          # View profile for account 12345
@@ -67,7 +69,8 @@ icqq profile
 icqq requests
 icqq login -r
 icqq config get
-icqq config set defaultUin 12345
+icqq config set currentUin 12345
+icqq switch 12345
 icqq -u 12345 profile
 icqq ocr ./screenshot.png
 icqq webhook set https://example.com/hook

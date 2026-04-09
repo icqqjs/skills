@@ -34,7 +34,7 @@ Load the corresponding reference file based on what the user wants:
 
 - All `<uid>` = QQ number (integer), `<gid>` = group number (integer)
 - Daemon must run first: `icqq login`
-- Multi-instance: use `-u <uin>` or `ICQQ_CURRENT_UIN` env to specify account; defaults to `config.defaultUin`
+- Multi-instance: use `-u <uin>` or `ICQQ_CURRENT_UIN` env to specify account; defaults to `config.currentUin`
 - **Use `icqq friend send` / `icqq group send` for non-interactive messaging** (agent-friendly); `icqq friend chat` / `icqq group chat` are interactive
 - CQ code syntax in messages: `[face:id]` `[image:path]` `[at:uid]` `[at:all]` `[dice]` `[rps]`
 - Quote strings with spaces: `icqq friend send 12345 "hello world"`
