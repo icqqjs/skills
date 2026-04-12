@@ -122,6 +122,72 @@ icqq guild channel forum-url <guild_id> <channel_id> <forum_id> # Get forum URL
 icqq completion [shell]        # Generate shell completion script (bash/zsh/fish)
 ```
 
+## RPC (TCP Remote Connection)
+
+The daemon supports optional TCP remote access for cross-machine QQ account control.
+
+### Configuration
+
+In `~/.icqq/config.json`:
+
+```json
+{
+  "rpc": {
+    "enabled": true,
+    "host": "127.0.0.1",
+    "port": 0
+  }
+}
+```
+
+Or via CLI:
+
+```
+icqq config set rpc.enabled true    # Enable RPC TCP listener
+icqq config set rpc.host 0.0.0.0   # Listen on all interfaces (for remote access)
+icqq config set rpc.port 9100      # Set listen port (0 = auto-assign)
+```
+
+| Field | Description | Default |
+|-------|-------------|---------|
+| `enabled` | Enable RPC TCP listener | `false` |
+| `host` | Listen address, `"0.0.0.0"` for remote | `"127.0.0.1"` |
+| `port` | Listen port, `0` = auto-assign | `0` |
+
+### Security
+
+- **HMAC-SHA256 challenge-response auth** — token never transmitted over network
+- **IP rate limiting** — 5 failures in 5 minutes → auto-block
+- **Default localhost only** — must explicitly set `host: "0.0.0.0"` for remote access
+- **4KB unauthenticated buffer limit** — prevents memory exhaustion
+
+### Programmatic Access
+
+```typescript
+import { IpcClient } from "@icqqjs/cli/lib/ipc-client";
+
+// Option 1: Specify host/port/token directly
+const client = await IpcClient.connectRpc({
+  host: "192.168.1.100",
+  port: 9100,
+  token: "your-token-here",
+});
+
+// Option 2: Auto-read from daemon.rpc file (local only)
+const client = await IpcClient.connectRpcByUin(12345);
+
+const resp = await client.request("list_friends");
+client.close();
+```
+
+### Auth Flow
+
+1. Client connects to TCP port
+2. Server sends `{ "challenge": "<random-hex>" }`
+3. Client computes `HMAC-SHA256(token, challenge)` → digest
+4. Client sends `{ "action": "auth", "params": { "digest": "<hex>" } }`
+5. Server verifies → authenticated
+
 ## Examples
 
 ```bash
