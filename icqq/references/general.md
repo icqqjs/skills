@@ -6,14 +6,31 @@
 icqq login                     # Login QQ and start daemon (interactive wizard)
 icqq login -r                  # Quick reconnect using saved token
 icqq login -q <uid> -r         # Quick reconnect specific account
-icqq status                    # Check all daemon/account statuses
-icqq stop                      # Stop the daemon
-icqq stop <uin>                # Stop specific daemon
+icqq logout                    # Logout and stop daemon (token invalidated)
+icqq logout -k                 # Disconnect only, keep token (login -r still works)
+icqq logout <uin>              # Logout specific account
 icqq switch                    # Switch current account (interactive)
 icqq switch <uin>              # Switch to specific account
 icqq profile                   # View current account profile
 icqq requests                  # View pending friend/group requests
 ```
+
+## System Service (auto-restart on crash, start on boot)
+
+```
+icqq service install           # Register daemon as system service (launchd/systemd)
+icqq service install -a        # Install service for all configured accounts
+icqq service uninstall         # Remove system service
+icqq service uninstall -a      # Uninstall all
+icqq service start             # Start installed service
+icqq service start -a          # Start all
+icqq service stop              # Stop service (keeps service file, no restart until start)
+icqq service stop -a           # Stop all
+icqq service status            # Show service install/running state
+icqq service status -a         # Show status for all accounts
+```
+
+Note: `icqq logout` does NOT prevent service auto-restart. To permanently stop, uninstall the service first.
 
 ## Config
 
