@@ -2,6 +2,8 @@
 
 ## Account
 
+> Use **`icqq service status`** for service/daemon state, or **`icqq profile`** / **`icqq friend list`** to verify the daemon answers over IPC.
+
 ```
 icqq login                     # Login QQ and start daemon (interactive wizard)
 icqq login -r                  # Quick reconnect using saved token
@@ -208,7 +210,7 @@ client.close();
 ## Examples
 
 ```bash
-icqq status
+icqq service status
 icqq profile
 icqq requests
 icqq login -r

@@ -58,7 +58,7 @@ skills/icqq/
     ├── settings.md        # 个人/群设置：昵称、头像、签名、群名片、群头衔
     ├── requests.md        # 好友/群请求处理
     ├── gfs.md             # 群文件系统：目录管理
-    └── general.md         # 登录、状态、OCR、黑名单
+    └── general.md         # 登录、服务/守护进程、OCR、黑名单
 ```
 
 ## 工作原理
@@ -86,7 +86,7 @@ description: 'Operate QQ account via icqq CLI. Use when asked to: send QQ messag
 | 个人/群设置 | `references/settings.md` |
 | 处理请求 | `references/requests.md` |
 | 群文件 | `references/gfs.md` |
-| 登录、状态、OCR、黑名单 | `references/general.md` |
+| 登录、服务状态、OCR、黑名单 | `references/general.md` |
 
 ### 3. 执行流程
 
@@ -98,7 +98,7 @@ description: 'Operate QQ account via icqq CLI. Use when asked to: send QQ messag
 
 - **`disable-model-invocation: true`** — 强制代理必须读取参考文件后再行动，不允许凭记忆猜测命令
 - **非交互优先** — 代理始终使用 `icqq send`（非交互）而非 `icqq friend chat`（交互模式）
-- **状态检查** — 不确定账号是否在线时，先执行 `icqq status`
+- **状态检查** — 先看 **`icqq service status`**（服务是否安装/在跑）；再对当前号执行 **`icqq profile`** 或 **`icqq friend list`** 等轻量命令，确认守护进程 IPC 能响应
 
 ## 命令速查
 
@@ -106,7 +106,7 @@ description: 'Operate QQ account via icqq CLI. Use when asked to: send QQ messag
 
 ```bash
 icqq login                              # 登录 QQ 并启动守护进程
-icqq status                             # 查看状态
+icqq service status                     # 查看服务/守护进程安装与运行状态
 icqq stop                               # 停止守护进程
 icqq profile                            # 查看个人资料
 icqq ocr <image>                        # 图片文字识别
