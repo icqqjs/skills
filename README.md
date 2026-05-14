@@ -68,10 +68,7 @@ skills/icqq/
 `SKILL.md` 的 YAML frontmatter 中定义了 `description` 字段，AI 代理根据该描述判断用户意图是否匹配此技能：
 
 ```yaml
-description: 'Operate QQ account via icqq CLI. Use when asked to: send QQ message,
-  manage QQ groups, check QQ friends, poke friend, like friend, mute member, kick
-  member, set nickname, view QQ profile, handle friend/group requests, manage group
-  files, set group announcement, QQ签到, 发消息, 管群, 好友操作, 群文件.'
+description: '通过 icqq 命令行操作 QQ：发消息、管群、好友、请求、群文件、设置、登录与守护等；用户提到 QQ、企鹅、好友、群、禁言、撤回、加群等时匹配。'
 ```
 
 ### 2. 模块化调度
@@ -97,9 +94,7 @@ description: 'Operate QQ account via icqq CLI. Use when asked to: send QQ messag
 关键设计决策：
 
 - **`disable-model-invocation: true`** — 强制代理必须读取参考文件后再行动，不允许凭记忆猜测命令
-- **非交互优先** — 代理始终使用 `icqq send`（非交互）而非 `icqq friend chat`（交互模式）
-- **状态检查** — 先看 **`icqq service status`**（服务是否安装/在跑）；再对当前号执行 **`icqq profile`** 或 **`icqq friend list`** 等轻量命令，确认守护进程 IPC 能响应
-
+- **非交互优先** — 代理始终使用 `icqq friend send` / `icqq group send`（非交互），而非 `icqq friend chat`（交互模式）
 ## 命令速查
 
 ### 账号与通用
@@ -116,8 +111,8 @@ icqq blacklist list                     # 查看黑名单
 ### 消息
 
 ```bash
-icqq send private <uid> <message>       # 发送私聊消息
-icqq send group <gid> <message>         # 发送群消息
+icqq friend send <uid> <message>        # 发送私聊消息
+icqq group send <gid> <message>         # 发送群消息
 icqq recall <message_id>                # 撤回消息
 icqq friend chat history <uid> [-c N]   # 查看私聊记录
 icqq group chat history <gid> [-c N]    # 查看群聊记录
@@ -134,7 +129,7 @@ CQ 码语法：
 | `[dice]` | 骰子 |
 | `[rps]` | 猜拳 |
 
-混合示例：`icqq send group 67890 "你好[face:178]看图[image:/tmp/pic.jpg]"`
+混合示例：`icqq group send 67890 "你好[face:178]看图[image:/tmp/pic.jpg]"`
 
 ### 好友
 
@@ -214,7 +209,7 @@ icqq request reject <flag> [-g] [-r "理由"]  # 拒绝请求
 - `<gid>` — 群号码（整数）
 - `<fid>` — 文件/目录 ID（由 `icqq group fs list` 输出）
 - `<flag>` — 请求标识（由 `icqq requests` 输出）
-- 包含空格的字符串用引号包裹：`icqq send private 12345 "hello world"`
+- 包含空格的字符串用引号包裹：`icqq friend send 12345 "hello world"`
 - 批量操作用 `&&` 串联
 
 ## 编写与维护参考文档
