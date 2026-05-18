@@ -1,27 +1,25 @@
-# Friend & Group Requests
+# 好友与群请求
 
-## View Pending Requests
+## 查看
 
-```
-icqq requests                  # Show all pending friend/group requests with flags
-```
-
-## Handle Requests
-
-```
-icqq request accept <flag>            # Accept friend request
-icqq request accept <flag> -g         # Accept group request
-icqq request reject <flag>            # Reject friend request
-icqq request reject <flag> -g         # Reject group request
-icqq request reject <flag> -g -r "理由"  # Reject with reason
+```bash
+icqq requests    # 输出含 <flag>，用于 accept/reject
 ```
 
-The `<flag>` value is shown in `icqq requests` output.
+## 处理
 
-## Examples
+```bash
+icqq request accept <flag>              # 同意好友
+icqq request accept <flag> -g           # 同意入群/邀请
+icqq request reject <flag>              # 拒绝好友
+icqq request reject <flag> -g           # 拒绝群
+icqq request reject <flag> -g -r "理由" # 拒绝并附理由
+```
+
+## 示例
 
 ```bash
 icqq requests
-icqq request accept abc123
-icqq request reject def456 -g -r "群已满"
+icqq request accept 1a2b3c4d
+icqq request reject 5e6f7g8h -g -r "群已满"
 ```

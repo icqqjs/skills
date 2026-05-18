@@ -1,64 +1,51 @@
-# Messaging
+# 消息
 
-## Send Message (non-interactive)
+## 发送（代理必用非交互）
 
-```
-icqq friend send <uid> <message>    # Send private message
-icqq group send <gid> <message>     # Send group message
-```
-
-**IMPORTANT**: Always use `icqq friend send` / `icqq group send` for agent operations (non-interactive). The `icqq friend chat` / `icqq group chat` commands enter interactive mode that the agent cannot operate.
-
-## CQ Code Syntax
-
-Messages support inline CQ codes for rich content:
-
-```
-[face:178]              # QQ face emoji (id 0~348)
-[image:/path/to/pic.jpg]  # Image (local path or URL)
-[at:12345]              # @ a user
-[at:all]                # @ everyone
-[dice]                  # Dice
-[rps]                   # Rock-paper-scissors
+```bash
+icqq friend send <uid> <message>       # 私聊
+icqq group send <gid> <message>      # 群聊
 ```
 
-Mixed example: `icqq send group 67890 "你好[face:178]看看[image:/tmp/pic.jpg]"`
+不要用 `icqq friend chat` / `icqq group chat`（交互模式，代理无法使用）。
 
-## Recall
+## CQ 码（写在 message 里）
 
 ```
+[face:178]                 # 表情 id 0~348
+[image:/path/to/a.jpg]     # 图片，或 URL
+[at:12345]                 # @某人
+[at:all]                   # @全体
+[dice]  [rps]              # 骰子 / 猜拳
+```
+
+示例：
+
+```bash
+icqq group send 67890 "你好[face:21][image:https://example.com/p.png]"
+```
+
+## 撤回与详情
+
+```bash
 icqq recall <message_id>
+icqq msg get <message_id>
+icqq msg mark-read <message_id>
+icqq forward get <message_id>          # 合并转发内容
 ```
 
-## Message Operations
+## 聊天记录
 
-```
-icqq msg get <message_id>              # View message details
-icqq msg mark-read <message_id>        # Mark message as read
-icqq forward get <message_id>          # View forwarded message content
-```
-
-## Chat History
-
-```
-icqq friend chat history <uid> [-c count]   # Private chat history (default 20)
-icqq group chat history <gid> [-c count]    # Group chat history (default 20)
+```bash
+icqq friend chat history <uid> [-c 条数]    # 默认 20
+icqq group chat history <gid> [-c 条数]
 ```
 
-## Interactive Chat (human only)
-
-```
-icqq friend chat <uid>     # Enter private chat mode
-icqq group chat <gid>      # Enter group chat mode
-```
-
-## Examples
+## 示例
 
 ```bash
 icqq friend send 12345 "你好"
-icqq group send 67890 "大家好[face:21]"
-icqq friend send 12345 "[image:https://example.com/pic.jpg]看这个"
+icqq group send 67890 "通知：今晚开会"
 icqq friend chat history 12345 -c 50
-icqq group chat history 67890
-icqq recall abc123
+icqq recall abcdef123456
 ```
