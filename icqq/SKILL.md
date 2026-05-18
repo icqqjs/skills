@@ -37,3 +37,4 @@ disable-model-invocation: true
 - CQ 码片段：`[face:id]` `[image:路径或URL]` `[at:uid]` `[at:all]` `[dice]` `[rps]`
 - 含空格的内容用英文双引号包起来：`icqq friend send 12345 "你好 世界"`
 - 批量操作用 `&&` 串联多条命令
+- **可选 MCP**：若已 `config set mcp.enabled true` 且守护进程已重启，客户端可用 HTTP MCP 工具 `icqq_invoke` / `icqq_list_actions`（与 IPC action 一致），见 [general.md](./references/general.md)

@@ -17,29 +17,39 @@ icqq profile                   # View current account profile
 icqq requests                  # View pending friend/group requests
 ```
 
-## System Service (auto-restart on crash, start on boot)
+## System Service (global singleton — no per-account uin)
+
+One supervisor service manages all accounts in `config.accounts`.
 
 ```
-icqq service install           # Register daemon as system service (launchd/systemd)
-icqq service install -a        # Install service for all configured accounts
-icqq service uninstall         # Remove system service
-icqq service uninstall -a      # Uninstall all
-icqq service start             # Start installed service
-icqq service start -a          # Start all
-icqq service stop              # Stop service (keeps service file, no restart until start)
-icqq service stop -a           # Stop all
-icqq service status            # Show service install/running state
-icqq service status -a         # Show status for all accounts
+icqq service install           # Install global icqq service (launchd/systemd)
+icqq service uninstall         # Remove global service
+icqq service start             # Start global service
+icqq service stop              # Stop global service (keeps unit/plist)
+icqq service restart           # Restart global service (reload MCP/RPC config)
+icqq service status            # Global service + per-account daemon/MCP status
 ```
 
-Note: `icqq logout` does NOT prevent service auto-restart. To permanently stop, uninstall the service first.
+Note: `icqq logout` does NOT prevent service auto-restart. To permanently stop, `icqq service uninstall`.
+
+## MCP (HTTP, embedded in daemon)
+
+MCP runs in the same process as the daemon when `mcp.enabled` is true. Use MCP tools `icqq_invoke` / `icqq_list_actions` instead of shell when the client supports HTTP MCP.
+
+```
+icqq config set mcp.enabled true
+icqq config set mcp.http.token "secret"
+icqq service restart           # Apply config
+```
+
+Endpoint: `~/.icqq/<uin>/daemon.mcp` or `icqq service status`.
 
 ## Config
 
 ```
 icqq config get                # View all config
-icqq config get <key>          # View specific config key (currentUin, webhookUrl, notifyEnabled)
-icqq config set <key> <value>  # Set config value
+icqq config get <key>          # View specific config key
+icqq config set <key> <value>  # Set config value (mcp.enabled, mcp.http.port, rpc.enabled, …)
 ```
 
 ## Multi-Instance
