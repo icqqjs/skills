@@ -34,12 +34,13 @@ icqq service status <uin>      # 仅该账号
 ## 配置
 
 ```bash
-icqq config get
-icqq config get <key>
+icqq config get                    # 含 mcp / rpc 摘要
+icqq config get mcp                # 全部 MCP 项（含解析后的默认值）
+icqq config get mcp.enabled
 icqq config set <key> <value>
 ```
 
-常用键：`currentUin`、`webhookUrl`、`notifyEnabled`、`mcp.enabled`、`mcp.http.port`、`mcp.http.token`、`rpc.enabled`
+常用键：`currentUin`、`webhookUrl`、`notifyEnabled`、`mcp.enabled`、`mcp.http.host`、`mcp.http.port`、`mcp.http.token`、`mcp.plugins`、`rpc.enabled`
 
 ## 多账号
 
