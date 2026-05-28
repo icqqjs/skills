@@ -21,6 +21,8 @@ npx skills add https://github.com/icqqjs/skills
 ```
 icqq/
 ├── SKILL.md              # 入口：路由表 + 全局约定（代理先读这个）
+├── agents/
+│   └── openai.yaml       # UI 展示名、简短描述和默认提示
 └── references/           # 按意图按需打开，不要一次全读
     ├── account.md        # 登录、系统服务、配置
     ├── mcp.md            # MCP icqq_invoke

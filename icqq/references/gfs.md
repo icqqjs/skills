@@ -26,6 +26,7 @@ icqq group fs delete <gid> <fid>
 icqq group fs upload <gid> <本地文件>
 icqq group fs download <gid> <fid>     # 返回下载链接
 icqq group fs forward <gid> <fid> <目标群gid>
+icqq group fs forward-offline <gid> <fid> [--name 文件名]
 ```
 
 ## 示例
@@ -35,4 +36,5 @@ icqq group fs list 67890
 icqq group fs mkdir 67890 "资料"
 icqq group fs upload 67890 ./report.pdf
 icqq group fs download 67890 abc123fid
+icqq group fs forward-offline 67890 offline-fid --name "资料.pdf"
 ```

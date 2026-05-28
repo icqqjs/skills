@@ -22,6 +22,10 @@ icqq group set title <gid> <uid> <头衔>
 icqq group set admin <gid> <uid>     # 设管理员
 icqq group set admin <gid> <uid> -r  # 取消管理员
 icqq group set remark <gid> <群备注>
+icqq group set anonymous <gid>       # 开启匿名
+icqq group set anonymous <gid> -d    # 关闭匿名
+icqq group set rate-limit <gid> <每分钟条数>
+icqq group set join-type <gid> <1|2|3> [-q 问题] [-a 答案]
 ```
 
 ## 示例
@@ -30,4 +34,5 @@ icqq group set remark <gid> <群备注>
 icqq set signature "今天也要加油"
 icqq set online-status 41
 icqq group set card 67890 12345 "管理员"
+icqq group set join-type 67890 3 -q "暗号是什么" -a "icqq"
 ```

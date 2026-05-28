@@ -35,6 +35,15 @@ icqq convert uin <uid>
 ```bash
 icqq stranger view <uid>
 icqq stranger status <uid>
+icqq stranger add-setting <uid>
+```
+
+## 密钥与资源 URL
+
+```bash
+icqq get client-key
+icqq get pskey <domain>
+icqq get video-url <fid> <md5>
 ```
 
 ## 漫游表情
@@ -80,4 +89,6 @@ icqq service restart
 
 ```bash
 icqq completion zsh
+icqq completion bash
+icqq completion fish
 ```

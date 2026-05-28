@@ -1,26 +1,26 @@
 ---
 name: icqq
-description: 通过 icqq CLI 或 MCP 操作 QQ：发私聊/群消息、撤回、聊天记录；好友与群管理；好友/群请求；群文件；资料与设置；登录与系统服务。用户提到 QQ、企鹅、好友、群、消息、撤回、禁言、踢人、签到、加群、群文件、登录、守护进程时使用。
-argument-hint: 用一句话说明操作，例如「给好友 12345 发你好」或「禁言群 11111 的用户 67890 十分钟」
-disable-model-invocation: true
+description: 通过 icqq CLI 或可用的 icqq MCP 操作 QQ，包括发私聊或群消息、撤回、查聊天记录、好友和群管理、请求处理、群文件、资料设置、登录、系统服务、Webhook、OCR、频道和缓存。用户提到 QQ、icqq、好友、群、消息、撤回、禁言、踢人、签到、加群、群文件、登录、守护进程、MCP 或通知时使用。
 ---
 
 # icqq QQ 操作技能
 
-## 先选执行方式
+## 执行原则
 
-| 方式 | 何时用 |
-|------|--------|
-| **终端 `icqq …`** | 默认；代理在 shell 里执行 |
-| **MCP `icqq_invoke`** | 宿主已配置 HTTP MCP 且工具可用时，可减少拼命令；见 [mcp.md](./references/mcp.md) |
+- 默认用终端 `icqq ...` 执行；只有宿主已配置 icqq MCP 且工具可用时，才改用 MCP，见 [mcp.md](./references/mcp.md)。
+- 执行前必须先打开下方匹配的 `references/*.md`，从文档复制命令并替换占位符；不要凭记忆猜命令。
+- 优先执行一条明确命令。不要把多个 `icqq` 命令串成一行。
+- 用户已给出精确目标和动作时直接执行；目标、账号、群号或操作含义不清时先问一句确认。
+- 对删好友、踢人、全体禁言、退群、登出、卸载服务、同意或拒绝请求等高影响动作，确认目标缺失或语义含糊时必须先澄清。
+- 失败时回报关键错误，但先脱敏 `Authorization`、`GITHUB_TOKEN`、PAT、MCP token 和不必要的完整本地路径。
+- 不要为了“预检”先跑 `icqq service status`；只有用户明确询问状态、配置 MCP、排查登录/服务问题，或相关命令失败后才查看状态。
 
-无论哪种方式，**都必须先读下方对应参考文档再执行**，不要凭记忆猜命令。
+## 执行流程
 
-## 执行流程（3 步）
-
-1. **对表选模块** → 打开一个 `references/*.md`
-2. **从文档复制命令** → 替换 `<uid>` `<gid>` 等占位符
-3. **运行并回报** → 失败就直接贴错误；**不要**事先 `service status` 探测
+1. **选模块**：按路由表打开一个 reference；跨模块任务只打开必要的几个。
+2. **组命令**：替换 `<uid>`、`<gid>`、`<message>` 等占位符；消息或名称含空格时用双引号。
+3. **执行**：用非交互命令；如果文档标注会进入交互模式，不要用于代理执行。
+4. **回报**：简短说明成功结果；失败则给出脱敏后的错误和下一步建议。
 
 前提：用户本机已 `icqq login` 或系统服务在跑。未登录时命令会失败，提示用户登录即可。
 
@@ -46,12 +46,14 @@ disable-model-invocation: true
 | `<gid>` | 群号 |
 | `<fid>` | 群文件 ID（来自 `icqq group fs list`） |
 | `<flag>` | 请求标识（来自 `icqq requests`） |
+| `<message>` | 消息内容，支持普通文本和 CQ 码 |
 
 - **发消息**：用 `icqq friend send` / `icqq group send`（非交互）。不要用 `friend chat` / `group chat`（交互式，代理用不了）。
 - **多账号**：`icqq -u <uin> …` 或 `ICQQ_CURRENT_UIN=<uin>`；不写则用 `config.currentUin`。
 - **CQ 码**（写在消息字符串里）：`[face:id]` `[image:路径或URL]` `[at:uid]` `[at:all]` `[dice]` `[rps]`
 - **含空格**：双引号包裹，如 `icqq friend send 12345 "你好 世界"`
-- **批量**：`cmd1 && cmd2`
+- **JSON 输出**：需要结构化结果时给命令加全局参数 `--json`。
+- **安装依赖**：提示缺少 `@icqqjs/icqq` 时看 [account.md](./references/account.md) 的 `icqq setup`。
 
 ## 常见意图 → 第一条命令
 

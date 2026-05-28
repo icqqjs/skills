@@ -1,5 +1,15 @@
 # 账号、登录与系统服务
 
+## 安装与核心依赖
+
+CLI 依赖 `@icqqjs/icqq`。缺少核心依赖时先用 `icqq setup`，不要手动把 `@icqqjs:registry` 写入全局 `~/.npmrc`。
+
+```bash
+icqq setup
+icqq setup --token <PAT>
+GITHUB_TOKEN=<PAT> icqq setup
+```
+
 ## 登录与登出
 
 ```bash
@@ -52,6 +62,7 @@ ICQQ_CURRENT_UIN=12345 icqq group send 67890 "hi"
 ## 示例
 
 ```bash
+icqq setup
 icqq login -r
 icqq service status
 icqq service restart

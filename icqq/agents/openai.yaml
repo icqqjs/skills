@@ -1,0 +1,4 @@
+interface:
+  display_name: "icqq QQ"
+  short_description: "通过 icqq CLI 或 MCP 发消息和管理 QQ"
+  default_prompt: "Use $icqq to send a QQ message or manage a QQ group with icqq."
