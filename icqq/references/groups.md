@@ -42,11 +42,11 @@ icqq group essence remove <message_id>
 ## 表态
 
 ```bash
-icqq group reaction add <gid> <seq> <表情id>
-icqq group reaction remove <gid> <seq> <表情id>
+icqq group reaction add <message_id> <表情id>
+icqq group reaction remove <message_id> <表情id>
 ```
 
-`<seq>` 是群消息序列号，不是全局 `<message_id>`。
+这里直接传群消息的 `<message_id>`，程序内部会自动解析对应的群号与消息序列号。
 
 ## 示例
 
@@ -57,5 +57,5 @@ icqq group mute 67890 12345 -d 3600
 icqq group kick 67890 99999 -b
 icqq group sign 67890
 icqq group announce 67890 "本周五团建"
-icqq group reaction add 67890 123456 "128077"
+icqq group reaction add "AAEAAQAAAA..." "128077"
 ```
