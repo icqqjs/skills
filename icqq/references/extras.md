@@ -28,11 +28,18 @@ icqq notify off
 ```bash
 icqq convert uid <qq号>
 icqq convert uin <uid>
+icqq convert uids <uid1,uid2,...>   # 批量 UID→QQ
+icqq convert uins <qq1,qq2,...>     # 批量 QQ→UID
+icqq get cookies [domain]
+icqq get csrf-token
+icqq get online-status
+icqq get refresh-nt-pic-rkey [-f]
 ```
 
 ## 陌生人
 
 ```bash
+icqq stranger list
 icqq stranger view <uid>
 icqq stranger status <uid>
 icqq stranger add-setting <uid>
@@ -70,6 +77,7 @@ icqq guild list
 icqq guild info <guild_id>
 icqq guild members <guild_id>
 icqq guild channel list <guild_id>
+icqq guild channel view <guild_id> <channel_id>
 icqq guild channel send <guild_id> <channel_id> <message>
 icqq guild channel recall <guild_id> <channel_id> <seq>
 ```

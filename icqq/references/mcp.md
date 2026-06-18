@@ -30,6 +30,10 @@ icqq service status                           # 查看 MCP URL
 | `send_private_msg` | `{ "user_id": 12345, "message": "你好" }` |
 | `send_group_msg` | `{ "group_id": 67890, "message": "大家好" }` |
 | `send_temp_msg` | `{ "group_id": 67890, "user_id": 12345, "message": "你好" }` |
+| `get_profile` | `{ "user_id": 12345 }` |
+| `list_strangers` | `{}` |
+| `history_by_msg_id` | `{ "message_id": "...", "count": 20 }` |
+| `send_long_msg` | `{ "group_id": 67890, "message": "很长..." }` |
 | `list_friends` | `{}` |
 | `list_groups` | `{}` |
 | `group_mute` | `{ "group_id": 67890, "user_id": 12345, "duration": 600 }` |

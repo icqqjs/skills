@@ -5,7 +5,10 @@
 ```bash
 icqq friend list
 icqq friend view <uid>
+icqq friend profile <uid>           # 详细资料卡
 icqq friend avatar-url <uid>
+icqq friend same-groups <uid>
+icqq friend share-card <uid> <url> <title>
 ```
 
 ## 操作
@@ -23,6 +26,7 @@ icqq friend add <uid>
 
 ```bash
 icqq friend send-file <uid> <文件路径>
+icqq friend forward-file <uid> <fid> [-g 目标群]
 icqq friend file-info <uid> <fid>
 icqq friend file-url <uid> <fid>
 icqq friend recall-file <uid> <fid>

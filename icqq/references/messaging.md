@@ -4,8 +4,11 @@
 
 ```bash
 icqq friend send <uid> <message>       # 私聊
-icqq group send <gid> <message>      # 群聊
-icqq group send-temp <gid> <uid> <message>   # 群临时会话（非好友）
+icqq group send <gid> <message>      # 群聊（-a 匿名）
+icqq group send-temp <gid> <uid> <message>   # 群临时会话
+icqq friend send-long <uid> <message>       # 私聊长消息
+icqq group send-long <gid> <message>         # 群聊长消息
+icqq msg history-by-id <message_id> [-c 条数]  # 以 msgid 锚点拉历史
 ```
 
 不要用 `icqq friend chat` / `icqq group chat`（交互模式，代理无法使用）。
