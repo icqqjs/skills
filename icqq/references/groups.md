@@ -15,6 +15,7 @@ icqq group at-all-remain <gid>
 
 ```bash
 icqq group send <gid> <message>
+icqq group send-temp <gid> <uid> <message>   # 群临时会话
 icqq group poke <gid> <uid>
 icqq group invite <gid> <uid>       # 邀请好友入群
 icqq group sign <gid>             # 签到

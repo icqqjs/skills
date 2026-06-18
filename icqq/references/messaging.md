@@ -5,6 +5,7 @@
 ```bash
 icqq friend send <uid> <message>       # 私聊
 icqq group send <gid> <message>      # 群聊
+icqq group send-temp <gid> <uid> <message>   # 群临时会话（非好友）
 ```
 
 不要用 `icqq friend chat` / `icqq group chat`（交互模式，代理无法使用）。
@@ -46,6 +47,7 @@ icqq group chat history <gid> [-c 条数]
 ```bash
 icqq friend send 12345 "你好"
 icqq group send 67890 "通知：今晚开会"
+icqq group send-temp 67890 12345 "你好，来自群临时会话"
 icqq friend chat history 12345 -c 50
 icqq recall abcdef123456
 ```
