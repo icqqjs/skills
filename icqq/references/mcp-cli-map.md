@@ -2,143 +2,143 @@
 
 # MCP action ↔ CLI 对照
 
-由 `pnpm generate:skill-map` 从 `action-hints.ts` 与 `src/commands/**` 生成。
+由 `pnpm generate:skill-map` 从 `action-catalog` 与 `src/commands/**` 生成。
 MCP 调用前先 `icqq_list_actions`；下表 CLI 列可能有多个命令映射同一 action。
 
 | MCP action | 说明 | params 提示 | CLI | MCP |
 |------------|------|-------------|-----|-----|
-| `add_friend` | 申请添加好友 | group_id, user_id, comment? | `icqq friend add` | 允许 |
-| `add_friend_class` | 新建好友分组 | name | `icqq friend class add` | 允许 |
-| `clean_cache` | 清理缓存 | 无 | `icqq cache clean` | 允许 |
-| `delete_friend_class` | 删除好友分组 | id | `icqq friend class delete` | 允许 |
+| `add_friend` | add_friend | — | `icqq friend add` | 允许 |
+| `add_friend_class` | add_friend_class | — | `icqq friend class add` | 允许 |
+| `clean_cache` | clean_cache | — | `icqq cache clean` | 允许 |
+| `delete_friend_class` | delete_friend_class | — | `icqq friend class delete` | 允许 |
 | `delete_msg` | 删除消息 | message_id | — | 禁止 |
-| `delete_stamp` | 删除漫游表情 | id | `icqq stamp delete` | 禁止 |
-| `friend_class` | 移动好友到分组 | user_id, class_id | `icqq friend class set` | 允许 |
-| `friend_delete` | 删除好友 | user_id, block? | `icqq friend delete` | 禁止 |
-| `friend_forward_file` | 转发私聊文件到群/临时 | user_id, fid, group_id? | `icqq friend forward-file` | 允许 |
-| `friend_like` | 给好友点赞 | user_id, times? | `icqq friend like` | 允许 |
-| `friend_poke` | 戳一戳好友 | user_id | `icqq friend poke` | 允许 |
-| `friend_recall_file` | 撤回好友文件 | user_id, fid | `icqq friend recall-file` | 允许 |
-| `friend_remark` | 设置好友备注 | user_id, remark | `icqq friend remark` | 允许 |
-| `get_add_friend_setting` | 获取好友添加设置 | user_id | `icqq stranger add-setting` | 允许 |
-| `get_avatar_url` | 获取用户头像 URL | user_id, size? | `icqq friend avatar-url` | 允许 |
-| `get_channel_info` | 获取子频道详情 | guild_id, channel_id | `icqq guild channel view` | 允许 |
-| `get_client_key` | 获取客户端密钥 | 无 | `icqq get client-key` | 禁止 |
-| `get_cookies` | 获取 Cookies | domain? | `icqq get cookies` | 允许 |
-| `get_csrf_token` | 获取 CSRF Token (bkn) | 无 | `icqq get csrf-token` | 允许 |
-| `get_file_info` | 获取文件信息 | user_id, fid | `icqq friend file-info` | 允许 |
-| `get_file_url` | 获取文件下载链接 | user_id, fid | `icqq friend file-url` | 允许 |
-| `get_forum_url` | 获取帖子 URL | guild_id, channel_id, forum_id | `icqq guild channel forum-url` | 允许 |
-| `get_forward_msg` | 获取合并转发内容 | resid | `icqq forward get` | 允许 |
-| `get_friend_info` | 查看好友资料 | user_id | `icqq friend view` | 允许 |
-| `get_group_avatar_url` | 获取群头像 URL | group_id, size?, history? | `icqq group avatar-url` | 允许 |
-| `get_group_info` | 查看群信息 | group_id | `icqq group view` | 允许 |
-| `get_group_member_info` | 查看群成员资料 | group_id, user_id | `icqq group member view` | 允许 |
-| `get_group_share` | 获取群分享 JSON | group_id | `icqq group share` | 允许 |
+| `delete_stamp` | delete_stamp | — | `icqq stamp delete` | 禁止 |
+| `friend_class` | friend_class | — | `icqq friend class set` | 允许 |
+| `friend_delete` | friend_delete | — | `icqq friend delete` | 禁止 |
+| `friend_forward_file` | friend_forward_file | — | `icqq friend forward-file` | 允许 |
+| `friend_like` | friend_like | — | `icqq friend like` | 允许 |
+| `friend_poke` | friend_poke | — | `icqq friend poke` | 允许 |
+| `friend_recall_file` | friend_recall_file | — | `icqq friend recall-file` | 允许 |
+| `friend_remark` | friend_remark | — | `icqq friend remark` | 允许 |
+| `get_add_friend_setting` | get_add_friend_setting | — | `icqq stranger add-setting` | 允许 |
+| `get_avatar_url` | get_avatar_url | — | `icqq friend avatar-url` | 允许 |
+| `get_channel_info` | get_channel_info | — | `icqq guild channel view` | 允许 |
+| `get_client_key` | get_client_key | — | `icqq get client-key` | 禁止 |
+| `get_cookies` | get_cookies | — | `icqq get cookies` | 允许 |
+| `get_csrf_token` | get_csrf_token | — | `icqq get csrf-token` | 允许 |
+| `get_file_info` | get_file_info | — | `icqq friend file-info` | 允许 |
+| `get_file_url` | get_file_url | — | `icqq friend file-url` | 允许 |
+| `get_forum_url` | get_forum_url | — | `icqq guild channel forum-url` | 允许 |
+| `get_forward_msg` | get_forward_msg | — | `icqq forward get` | 允许 |
+| `get_friend_info` | get_friend_info | — | `icqq friend view` | 允许 |
+| `get_group_avatar_url` | get_group_avatar_url | — | `icqq group avatar-url` | 允许 |
+| `get_group_info` | get_group_info | — | `icqq group view` | 允许 |
+| `get_group_member_info` | get_group_member_info | — | `icqq group member view` | 允许 |
+| `get_group_share` | get_group_share | — | `icqq group share` | 允许 |
 | `get_msg` | 获取单条消息 | message_id | `icqq msg get` | 允许 |
-| `get_notify` | 查询系统通知状态 | 无 | `icqq notify` | 允许 |
-| `get_online_status` | 向服务器查询在线状态 | 无 | `icqq get online-status` | 允许 |
-| `get_pic_url` | 获取图片 URL | elem, group_id? | user_id? | — | 允许 |
-| `get_profile` | 获取详细资料卡 | user_id 或 uid（string） | `icqq friend profile` | 允许 |
-| `get_pskey` | 获取 PSKey | domain | `icqq get pskey` | 禁止 |
-| `get_ptt_url` | 获取语音 URL | elem, group_id? | user_id? | — | 允许 |
-| `get_roaming_stamp` | 获取漫游表情列表 | 无 | `icqq stamp list` | 允许 |
+| `get_notify` | get_notify | — | `icqq notify` | 允许 |
+| `get_online_status` | get_online_status | — | `icqq get online-status` | 允许 |
+| `get_pic_url` | get_pic_url | — | — | 允许 |
+| `get_profile` | get_profile | — | `icqq friend profile` | 允许 |
+| `get_pskey` | get_pskey | — | `icqq get pskey` | 禁止 |
+| `get_ptt_url` | get_ptt_url | — | — | 允许 |
+| `get_roaming_stamp` | get_roaming_stamp | — | `icqq stamp list` | 允许 |
 | `get_self_profile` | 获取自身详细资料 | 无 | `icqq profile` | 允许 |
 | `get_status` | 获取当前在线状态 | 无 | — | 允许 |
-| `get_status_info` | 查询在线状态 | uin? | `icqq stranger status` | 允许 |
-| `get_stranger_info` | 查看陌生人资料 | user_id | `icqq stranger view` | 允许 |
-| `get_system_msg` | 获取待处理的好友/群请求 | 无 | `icqq requests` | 允许 |
-| `get_video_url` | 获取视频下载链接 | fid, md5 | `icqq get video-url` | 允许 |
-| `get_webhook` | 查询 Webhook 配置 | 无 | `icqq webhook` | 允许 |
-| `gfs_delete` | 删除群文件/文件夹 | group_id, fid | `icqq group fs delete` | 禁止 |
-| `gfs_download` | 获取群文件下载链接 | group_id, fid | `icqq group fs download` | 允许 |
-| `gfs_forward` | 转发群文件到另一群 | group_id, target_group_id, fid, pid?, name? | `icqq group fs forward` | 允许 |
-| `gfs_forward_offline` | 转发群文件到离线文件 | group_id, fid, name? | `icqq group fs forward-offline` | 允许 |
-| `gfs_info` | 群文件系统信息 | group_id | `icqq group fs info` | 允许 |
-| `gfs_list` | 列出群文件 | group_id, pid? | `icqq group fs list` | 允许 |
-| `gfs_mkdir` | 创建群文件夹 | group_id, name | `icqq group fs mkdir` | 允许 |
-| `gfs_move` | 移动群文件 | group_id, fid, pid | `icqq group fs move` | 允许 |
-| `gfs_rename` | 重命名群文件 | group_id, fid, name | `icqq group fs rename` | 允许 |
-| `gfs_stat` | 查看群文件详情 | group_id, fid | `icqq group fs stat` | 允许 |
-| `gfs_upload` | 上传群文件 | group_id, file, pid?, name? | `icqq group fs upload` | 允许 |
-| `group_allow_anony` | 开关匿名聊天 | group_id, enable? | `icqq group set anonymous` | 允许 |
-| `group_announce` | 发送群公告 | group_id, content | `icqq group announce` | 允许 |
-| `group_anon_info` | 获取匿名信息 | group_id | `icqq group anon-info` | 允许 |
-| `group_at_all_remain` | 查询 @全体 剩余次数 | group_id | `icqq group at-all-remain` | 允许 |
-| `group_del_reaction` | 取消群消息表态 | message_id, id | `icqq group reaction remove` | 允许 |
-| `group_essence_add` | 添加精华消息 | message_id | `icqq group essence add` | 允许 |
-| `group_essence_remove` | 移除精华消息 | message_id | `icqq group essence remove` | 允许 |
-| `group_invite` | 邀请好友入群 | group_id, user_id | `icqq group invite` | 允许 |
-| `group_kick` | 踢出成员 | group_id, user_id, block?, message? | `icqq group kick` | 禁止 |
-| `group_mute` | 禁言成员 | group_id, user_id, duration? | `icqq group mute` | 禁止 |
-| `group_mute_all` | 全体禁言 | group_id, enable? | `icqq group mute-all` | 禁止 |
-| `group_mute_anony` | 禁言匿名成员 | group_id, flag, duration? | `icqq group mute-anon` | 允许 |
-| `group_muted_list` | 获取被禁言成员列表 | group_id | `icqq group muted-list` | 允许 |
-| `group_poke` | 戳一戳群成员 | group_id, user_id | `icqq group poke` | 允许 |
-| `group_quit` | 退出群聊 | group_id | `icqq group quit` | 禁止 |
-| `group_set_join_type` | 设置入群验证方式 | group_id, type, question?, answer? | `icqq group set join-type` | 允许 |
-| `group_set_rate_limit` | 设置群发消息频率限制 | group_id, times | `icqq group set rate-limit` | 允许 |
-| `group_set_reaction` | 给群消息添加表态 | message_id, id | `icqq group reaction add` | 允许 |
-| `group_sign` | 群签到 | group_id | `icqq group sign` | 允许 |
-| `guild_channel_share` | 发送频道分享链接 | guild_id, channel_id, url, title, ... | `icqq guild channel share` | 允许 |
-| `guild_channels` | 获取频道子频道列表 | guild_id | `icqq guild channel list` | 允许 |
-| `guild_info` | 获取频道信息 | guild_id | `icqq guild info` | 允许 |
-| `guild_list` | 获取频道列表 | 无 | `icqq guild list` | 允许 |
-| `guild_members` | 获取频道成员列表 | guild_id | `icqq guild members` | 允许 |
-| `guild_recall_msg` | 撤回频道消息 | guild_id, channel_id, seq | `icqq guild channel recall` | 允许 |
-| `guild_send_msg` | 发送频道消息 | guild_id, channel_id, message | `icqq guild channel send` | 允许 |
-| `handle_friend_request` | 处理好友请求 | flag, approve?, remark?, block? | — | 允许 |
-| `handle_group_request` | 处理群请求 | flag, approve?, reason?, block? | — | 允许 |
+| `get_status_info` | get_status_info | — | `icqq stranger status` | 允许 |
+| `get_stranger_info` | get_stranger_info | — | `icqq stranger view` | 允许 |
+| `get_system_msg` | get_system_msg | — | `icqq requests` | 允许 |
+| `get_video_url` | get_video_url | — | `icqq get video-url` | 允许 |
+| `get_webhook` | get_webhook | — | `icqq webhook` | 允许 |
+| `gfs_delete` | gfs_delete | — | `icqq group fs delete` | 禁止 |
+| `gfs_download` | gfs_download | — | `icqq group fs download` | 允许 |
+| `gfs_forward` | gfs_forward | — | `icqq group fs forward` | 允许 |
+| `gfs_forward_offline` | gfs_forward_offline | — | `icqq group fs forward-offline` | 允许 |
+| `gfs_info` | gfs_info | — | `icqq group fs info` | 允许 |
+| `gfs_list` | gfs_list | — | `icqq group fs list` | 允许 |
+| `gfs_mkdir` | gfs_mkdir | — | `icqq group fs mkdir` | 允许 |
+| `gfs_move` | gfs_move | — | `icqq group fs move` | 允许 |
+| `gfs_rename` | gfs_rename | — | `icqq group fs rename` | 允许 |
+| `gfs_stat` | gfs_stat | — | `icqq group fs stat` | 允许 |
+| `gfs_upload` | gfs_upload | — | `icqq group fs upload` | 允许 |
+| `group_allow_anony` | group_allow_anony | — | `icqq group set anonymous` | 允许 |
+| `group_announce` | group_announce | — | `icqq group announce` | 允许 |
+| `group_anon_info` | group_anon_info | — | `icqq group anon-info` | 允许 |
+| `group_at_all_remain` | group_at_all_remain | — | `icqq group at-all-remain` | 允许 |
+| `group_del_reaction` | group_del_reaction | — | `icqq group reaction remove` | 允许 |
+| `group_essence_add` | group_essence_add | — | `icqq group essence add` | 允许 |
+| `group_essence_remove` | group_essence_remove | — | `icqq group essence remove` | 允许 |
+| `group_invite` | group_invite | — | `icqq group invite` | 允许 |
+| `group_kick` | group_kick | — | `icqq group kick` | 禁止 |
+| `group_mute` | group_mute | — | `icqq group mute` | 禁止 |
+| `group_mute_all` | group_mute_all | — | `icqq group mute-all` | 禁止 |
+| `group_mute_anony` | group_mute_anony | — | `icqq group mute-anon` | 允许 |
+| `group_muted_list` | group_muted_list | — | `icqq group muted-list` | 允许 |
+| `group_poke` | group_poke | — | `icqq group poke` | 允许 |
+| `group_quit` | group_quit | — | `icqq group quit` | 禁止 |
+| `group_set_join_type` | group_set_join_type | — | `icqq group set join-type` | 允许 |
+| `group_set_rate_limit` | group_set_rate_limit | — | `icqq group set rate-limit` | 允许 |
+| `group_set_reaction` | group_set_reaction | — | `icqq group reaction add` | 允许 |
+| `group_sign` | group_sign | — | `icqq group sign` | 允许 |
+| `guild_channel_share` | guild_channel_share | — | `icqq guild channel share` | 允许 |
+| `guild_channels` | guild_channels | — | `icqq guild channel list` | 允许 |
+| `guild_info` | guild_info | — | `icqq guild info` | 允许 |
+| `guild_list` | guild_list | — | `icqq guild list` | 允许 |
+| `guild_members` | guild_members | — | `icqq guild members` | 允许 |
+| `guild_recall_msg` | guild_recall_msg | — | `icqq guild channel recall` | 允许 |
+| `guild_send_msg` | guild_send_msg | — | `icqq guild channel send` | 允许 |
+| `handle_friend_request` | handle_friend_request | — | — | 允许 |
+| `handle_group_request` | handle_group_request | — | — | 允许 |
 | `history_by_msg_id` | 以 message_id 为锚点拉历史 | message_id, count? | `icqq msg history-by-id` | 允许 |
 | `history_group` | 获取群聊历史 | group_id, count?, seq? | `icqq group chat history` | 允许 |
 | `history_private` | 获取私聊历史 | user_id, count?, time? | `icqq friend chat history` | 允许 |
-| `image_ocr` | 图片 OCR | file | `icqq ocr` | 允许 |
-| `list_blacklist` | 获取黑名单列表 | 无 | `icqq blacklist` | 允许 |
-| `list_friend_classes` | 获取好友分组列表 | 无 | `icqq friend class list` | 允许 |
+| `image_ocr` | image_ocr | — | `icqq ocr` | 允许 |
+| `list_blacklist` | list_blacklist | — | `icqq blacklist` | 允许 |
+| `list_friend_classes` | list_friend_classes | — | `icqq friend class list` | 允许 |
 | `list_friends` | 获取好友列表 | 无 | `icqq friend list` | 允许 |
-| `list_group_members` | 获取群成员列表 | group_id | `icqq group member list` | 允许 |
-| `list_groups` | 获取群列表 | 无 | `icqq group list` | 允许 |
-| `list_strangers` | 获取陌生人列表 | 无 | `icqq stranger list` | 允许 |
-| `logout` | 登出并停止守护进程 | keep_token?: boolean | — | 禁止 |
-| `make_forward_msg` | 构造合并转发消息 | messages, dm? | — | 允许 |
+| `list_group_members` | list_group_members | — | `icqq group member list` | 允许 |
+| `list_groups` | list_groups | — | `icqq group list` | 允许 |
+| `list_strangers` | list_strangers | — | `icqq stranger list` | 允许 |
+| `logout` | logout | — | — | 禁止 |
+| `make_forward_msg` | make_forward_msg | — | — | 允许 |
 | `mark_read` | 标记消息已读 | message_id | `icqq msg mark-read` | 允许 |
 | `ping` | 心跳检测 | 无 | — | 允许 |
 | `recall_msg` | 撤回消息 | message_id | `icqq recall` | 禁止 |
-| `refresh_nt_pic_rkey` | 刷新 QQNT 图片 rkey | force? | `icqq get refresh-nt-pic-rkey` | 允许 |
-| `reload_blacklist` | 重载黑名单 | 无 | `icqq reload blacklist` | 允许 |
-| `reload_friend_list` | 重载好友列表 | 无 | `icqq reload friends` | 允许 |
-| `reload_group_list` | 重载群列表 | 无 | `icqq reload groups` | 允许 |
-| `reload_guilds` | 重载频道列表 | 无 | `icqq reload guilds` | 允许 |
-| `reload_stranger_list` | 重载陌生人列表 | 无 | `icqq reload strangers` | 允许 |
-| `rename_friend_class` | 重命名好友分组 | id, name | `icqq friend class rename` | 允许 |
-| `search_same_group` | 查找与用户的共群 | user_id | `icqq friend same-groups` | 允许 |
-| `send_contact_share` | 发送链接分享卡片 | user_id 或 group_id, url, title, image?, content?, audio? | `icqq friend share-card`<br>`icqq group share-card` | 允许 |
-| `send_discuss_msg` | 发送讨论组消息 | discuss_id, message | `icqq discuss send` | 允许 |
-| `send_group_file` | 发送群文件 | group_id, file, pid?, name? | — | 允许 |
+| `refresh_nt_pic_rkey` | refresh_nt_pic_rkey | — | `icqq get refresh-nt-pic-rkey` | 允许 |
+| `reload_blacklist` | reload_blacklist | — | `icqq reload blacklist` | 允许 |
+| `reload_friend_list` | reload_friend_list | — | `icqq reload friends` | 允许 |
+| `reload_group_list` | reload_group_list | — | `icqq reload groups` | 允许 |
+| `reload_guilds` | reload_guilds | — | `icqq reload guilds` | 允许 |
+| `reload_stranger_list` | reload_stranger_list | — | `icqq reload strangers` | 允许 |
+| `rename_friend_class` | rename_friend_class | — | `icqq friend class rename` | 允许 |
+| `search_same_group` | search_same_group | — | `icqq friend same-groups` | 允许 |
+| `send_contact_share` | send_contact_share | — | `icqq friend share-card`<br>`icqq group share-card` | 允许 |
+| `send_discuss_msg` | send_discuss_msg | — | `icqq discuss send` | 允许 |
+| `send_group_file` | send_group_file | — | — | 允许 |
 | `send_group_msg` | 发送群消息 | group_id, message（string | MessageElem[]）, anonymous? | `icqq group send` | 允许 |
 | `send_long_msg` | 发送长消息（long_msg） | user_id 或 group_id, message（string | MessageElem[]） | `icqq friend send-long`<br>`icqq group send-long` | 允许 |
-| `send_private_file` | 发送私聊文件 | user_id, file | `icqq friend send-file` | 允许 |
+| `send_private_file` | send_private_file | — | `icqq friend send-file` | 允许 |
 | `send_private_msg` | 发送私聊消息 | user_id, message（string | MessageElem[]） | `icqq friend send` | 允许 |
 | `send_temp_msg` | 发送群临时会话消息 | group_id, user_id, message（string | MessageElem[]） | `icqq group send-temp` | 允许 |
-| `set_avatar` | 修改头像 | file | `icqq set avatar` | 允许 |
-| `set_birthday` | 修改生日 | birthday | `icqq set birthday` | 允许 |
-| `set_description` | 修改个人说明 | description | `icqq set description` | 允许 |
-| `set_gender` | 修改性别 | gender (0/1/2) | `icqq set gender` | 允许 |
-| `set_group_admin` | 设置/取消管理员 | group_id, user_id, enable? | `icqq group set admin` | 允许 |
-| `set_group_avatar` | 修改群头像 | group_id, file | `icqq group set avatar` | 允许 |
-| `set_group_card` | 修改群名片 | group_id, user_id, card | `icqq group set card` | 允许 |
-| `set_group_name` | 修改群名 | group_id, name | `icqq group set name` | 允许 |
-| `set_group_remark` | 修改群备注 | group_id, remark | `icqq group set remark` | 允许 |
-| `set_group_title` | 设置群头衔 | group_id, user_id, title, duration? | `icqq group set title` | 允许 |
-| `set_nickname` | 修改昵称 | nickname | `icqq set nickname` | 允许 |
-| `set_notify` | 开启/关闭系统通知 | enabled? | `icqq notify off`<br>`icqq notify on` | 允许 |
-| `set_online_status` | 修改在线状态 | status | `icqq set online-status` | 允许 |
-| `set_screen_member_msg` | 屏蔽/取消屏蔽成员消息 | group_id, user_id, is_screen? | `icqq group screen-member` | 允许 |
-| `set_signature` | 修改签名 | signature | `icqq set signature` | 允许 |
-| `set_webhook` | 设置 Webhook 地址 | url | `icqq webhook off`<br>`icqq webhook set` | 禁止 |
+| `set_avatar` | set_avatar | — | `icqq set avatar` | 允许 |
+| `set_birthday` | set_birthday | — | `icqq set birthday` | 允许 |
+| `set_description` | set_description | — | `icqq set description` | 允许 |
+| `set_gender` | set_gender | — | `icqq set gender` | 允许 |
+| `set_group_admin` | set_group_admin | — | `icqq group set admin` | 允许 |
+| `set_group_avatar` | set_group_avatar | — | `icqq group set avatar` | 允许 |
+| `set_group_card` | set_group_card | — | `icqq group set card` | 允许 |
+| `set_group_name` | set_group_name | — | `icqq group set name` | 允许 |
+| `set_group_remark` | set_group_remark | — | `icqq group set remark` | 允许 |
+| `set_group_title` | set_group_title | — | `icqq group set title` | 允许 |
+| `set_nickname` | set_nickname | — | `icqq set nickname` | 允许 |
+| `set_notify` | set_notify | — | `icqq notify off`<br>`icqq notify on` | 允许 |
+| `set_online_status` | set_online_status | — | `icqq set online-status` | 允许 |
+| `set_screen_member_msg` | set_screen_member_msg | — | `icqq group screen-member` | 允许 |
+| `set_signature` | set_signature | — | `icqq set signature` | 允许 |
+| `set_webhook` | set_webhook | — | `icqq webhook off`<br>`icqq webhook set` | 禁止 |
 | `subscribe` | （已废弃）连接后自动推送事件 | 无 | — | 允许 |
-| `uid2uin` | UID 转 UIN | uid, group_id? | `icqq convert uid` | 允许 |
-| `uid2uins` | 批量 UID 转 UIN | uids (string[]), group_id? | `icqq convert uids` | 允许 |
-| `uin2uid` | UIN 转 UID | uin, group_id? | `icqq convert uin` | 允许 |
-| `uin2uids` | 批量 UIN 转 UID | uins (number[]), group_id? | `icqq convert uins` | 允许 |
+| `uid2uin` | uid2uin | — | `icqq convert uid` | 允许 |
+| `uid2uins` | uid2uins | — | `icqq convert uids` | 允许 |
+| `uin2uid` | uin2uid | — | `icqq convert uin` | 允许 |
+| `uin2uids` | uin2uids | — | `icqq convert uins` | 允许 |
 | `unsubscribe` | （已废弃）断开连接自动停止 | 无 | — | 允许 |
