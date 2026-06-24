@@ -18,5 +18,25 @@
     "id": 4,
     "prompt": "脚本里查群 67890 的成员 12345 的资料，不要交互",
     "expected": "icqq --json group member view 67890 12345；见 json.md，禁止省略 uid 触发选择器"
+  },
+  {
+    "id": 5,
+    "prompt": "用 MCP 发群消息「测试」到群 67890，宿主已配置 icqq MCP",
+    "expected": "先 icqq_list_actions，再 icqq_invoke action=send_group_msg params={group_id:67890,message:\"测试\"}；或对照 mcp-cli-map.md"
+  },
+  {
+    "id": 6,
+    "prompt": "脚本化查看群 67890 群文件根目录列表",
+    "expected": "icqq --json group fs list 67890；见 gfs.md --json 小节，须带 gid"
+  },
+  {
+    "id": 7,
+    "prompt": "把群名片改成「值班」：群 67890，成员 12345",
+    "expected": "icqq group set card 67890 12345 \"值班\" 或 icqq --json group set card ...；见 settings.md"
+  },
+  {
+    "id": 8,
+    "prompt": "MCP 里 list_actions 和 send_private_msg 分别怎么用？",
+    "expected": "打开 mcp.md + mcp-cli-map.md；discovery 用 icqq_list_actions，invoke 带 user_id+message"
   }
 ]

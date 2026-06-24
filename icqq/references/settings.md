@@ -36,3 +36,18 @@ icqq set online-status 41
 icqq group set card 67890 12345 "管理员"
 icqq group set join-type 67890 3 -q "暗号是什么" -a "icqq"
 ```
+
+## 脚本化（`--json`）
+
+个人与群设置类命令均可加全局 `--json`；须带齐 `gid`/`uid`，勿依赖交互选择器：
+
+```bash
+icqq --json set signature "今天也要加油"
+icqq --json set online-status 41
+icqq --json group set card 67890 12345 "管理员"
+icqq --json group set join-type 67890 3 -q "暗号" -a "icqq"
+```
+
+变更类成功时 stdout 为 action 返回体。格式见 [json.md](./json.md)。
+
+**反模式**：无 `gid`/`uid` 时不要用 `--json` 触发选择器。

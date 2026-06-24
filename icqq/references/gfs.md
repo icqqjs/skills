@@ -38,3 +38,18 @@ icqq group fs upload 67890 ./report.pdf
 icqq group fs download 67890 abc123fid
 icqq group fs forward-offline 67890 offline-fid --name "资料.pdf"
 ```
+
+## 脚本化（`--json`）
+
+浏览与文件操作均可脚本化；`list`/`stat`/`download` 等须带齐 `gid` 与 `fid`：
+
+```bash
+icqq --json group fs list 67890
+icqq --json group fs stat 67890 <fid>
+icqq --json group fs download 67890 <fid>
+icqq --json group fs info 67890
+```
+
+上传/转发类成功时 stdout 为 action 返回体。见 [json.md](./json.md)。
+
+**反模式**：省略 `fid` 或 `gid` 指望交互补全。

@@ -41,6 +41,8 @@ icqq service status                           # 查看 MCP URL
 
 完整列表以 `icqq_list_actions` 为准，不要凭记忆猜 action 名或参数。`logout` 不会出现在 MCP 可调用列表里。
 
+**MCP ↔ CLI 对照表**（自动生成）：[mcp-cli-map.md](./mcp-cli-map.md)
+
 ## Cursor 配置示例
 
 ```json

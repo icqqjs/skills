@@ -103,3 +103,22 @@ icqq completion zsh
 icqq completion bash
 icqq completion fish
 ```
+
+## 脚本化（`--json`）
+
+下列查询/配置类命令支持 `--json`（须带齐 ID 或 URL）：
+
+```bash
+icqq --json stranger list
+icqq --json stranger view 12345
+icqq --json webhook
+icqq --json notify
+icqq --json guild list
+icqq --json guild info <guild_id>
+icqq --json reload friends
+icqq --json cache clean
+```
+
+`webhook set` / `notify on|off` 为变更类，成功 stdout 为简短对象。密钥类（`get client-key`、`get pskey`）建议仅人工终端执行，**不要**写入自动化脚本日志。
+
+**反模式**：无 `guild_id`/`uid` 时用 `--json` 触发选择器；在脚本中调用 `get client-key`。
