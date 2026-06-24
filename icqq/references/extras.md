@@ -68,9 +68,12 @@ icqq reload friends
 icqq reload groups
 icqq reload blacklist
 icqq reload guilds
+icqq reload strangers
 ```
 
 ## 频道（Guild）
+
+`icqq channel <子命令>` 与 `icqq guild channel <子命令>` 等价；推荐完整路径 `guild channel`。
 
 ```bash
 icqq guild list

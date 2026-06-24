@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "帮我在群 67890 里发一条消息：今晚 8 点开会",
+    "expected": "打开 groups/messaging reference，用 icqq group send 67890 \"今晚 8 点开会\"，非交互、不预检 status"
+  },
+  {
+    "id": 2,
+    "prompt": "icqq 命令报错守护进程未运行，怎么恢复？",
+    "expected": "打开 account.md，建议 icqq login -r 或 icqq service start；失败再看 service status 排查"
+  },
+  {
+    "id": 3,
+    "prompt": "用 JSON 列出当前账号好友列表，并说明失败时输出格式",
+    "expected": "icqq --json friend list；失败 stderr 为 {\"ok\":false,\"error\":\"...\"}，exit 1"
+  }
+]

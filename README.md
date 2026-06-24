@@ -39,7 +39,9 @@ icqq/
 
 1. 匹配用户意图 → 打开 **一个** reference
 2. 用文档里的命令在终端执行（或 MCP）
-3. 失败就回报错误，不预检守护进程
+3. 失败查 SKILL.md「失败与排查」表，不预检守护进程
+
+脚本化：`icqq --json …` 输出 JSON；失败 stderr `{"ok":false,"error":"..."}`。
 
 人类用户命令大全见仓库根目录 [README.md](../README.md)。
 
