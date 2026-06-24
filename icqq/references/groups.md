@@ -63,3 +63,16 @@ icqq group sign 67890
 icqq group announce 67890 "本周五团建"
 icqq group reaction add "AAEAAQAAAA..." "128077"
 ```
+
+## 脚本化（`--json`）
+
+```bash
+icqq --json group list
+icqq --json group view 67890            # group_id, group_name, member_count, owner_id 等
+icqq --json group member list 67890
+icqq --json group member view 67890 12345   # user_id, card, role, level, join_time 等
+icqq --json group muted-list 67890
+icqq --json group at-all-remain 67890
+```
+
+`group view` / `group member view` 须同时传入群号与成员 QQ 号。详见 [json.md](./json.md)。

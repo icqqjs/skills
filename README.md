@@ -25,6 +25,7 @@ icqq/
 │   └── openai.yaml       # UI 展示名、简短描述和默认提示
 └── references/           # 按意图按需打开，不要一次全读
     ├── account.md        # 登录、系统服务、配置
+    ├── json.md           # --json 脚本化输出
     ├── mcp.md            # MCP icqq_invoke
     ├── messaging.md
     ├── friends.md

@@ -54,3 +54,17 @@ icqq group send-temp 67890 12345 "你好，来自群临时会话"
 icqq friend chat history 12345 -c 50
 icqq recall abcdef123456
 ```
+
+## 脚本化（`--json`）
+
+查询类命令可加全局 `--json`（须带齐 ID，勿用交互 `chat`）：
+
+```bash
+icqq --json msg get <message_id>
+icqq --json forward get <message_id>
+icqq --json friend chat history 12345 -c 20
+icqq --json group chat history 67890 -c 20
+icqq --json msg history-by-id <message_id> -c 10
+```
+
+发送/撤回成功时 stdout 为 action 返回体。格式与陷阱见 [json.md](./json.md)。

@@ -51,3 +51,18 @@ icqq friend poke 12345
 icqq friend like 12345 -t 10
 icqq friend remark 12345 "同事-小王"
 ```
+
+## 脚本化（`--json`）
+
+列表与资料查询（**必须带 uid**，否则会进入交互选择器）：
+
+```bash
+icqq --json friend list
+icqq --json friend view 12345          # user_id, nickname, remark, sex, age, area 等
+icqq --json friend profile 12345
+icqq --json friend avatar-url 12345
+icqq --json friend same-groups 12345
+icqq --json friend class list
+```
+
+`friend view` 的 JSON 字段以 IPC `get_friend_info` 返回为准。详见 [json.md](./json.md)。
