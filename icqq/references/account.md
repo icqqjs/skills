@@ -64,7 +64,75 @@ icqq config set <key> <value>       # 全局
 icqq -u <uin> config set mcp.http.port 3920   # 账号级端口覆盖
 ```
 
-常用键：`currentUin`、`webhookUrl`、`notifyEnabled`、`mcp.enabled`、`mcp.http.host`、`mcp.http.port`（`0` = 自动）、`mcp.http.token`、`mcp.plugins`、`rpc.enabled`、`rpc.port`
+常用键：`currentUin`、`webhookUrl`、`notifyEnabled`、`mcp.*`、`rpc.*`、`alerts.enabled`、`alerts.providers.<type>.<field>`、`login.http.publicUrl`
+
+### Headless 告警与远程登录
+
+完整说明见仓库根目录 `README.md` → **「无人值守告警（alerts）」** 一节。
+
+```bash
+icqq config set alerts.enabled true
+icqq config get alerts          # 列出 alerts.providers.* 各字段
+icqq config get login
+icqq service restart            # 改配置后必须重启守护进程
+```
+
+#### 通知渠道（`alerts.providers.<type>.<field>`）
+
+| type | CLI 键 |
+|------|--------|
+| `bark` | `alerts.providers.bark.deviceKey`、`alerts.providers.bark.server` |
+| `wecom` | `alerts.providers.wecom.webhookKey` |
+| `dingtalk` | `alerts.providers.dingtalk.webhook`、`alerts.providers.dingtalk.secret` |
+| `feishu` | `alerts.providers.feishu.webhook`、`alerts.providers.feishu.secret` |
+| `telegram` | `alerts.providers.telegram.botToken`、`alerts.providers.telegram.chatId` |
+| `pushdeer` | `alerts.providers.pushdeer.pushkey`、`alerts.providers.pushdeer.server` |
+| `serverchan` | `alerts.providers.serverchan.sendkey` |
+| `generic` | `alerts.providers.generic.url` |
+
+各 type 可用 `alerts.providers.<type>.enabled false` 临时禁用。
+
+```bash
+# Bark（第三方服务器）
+icqq config set alerts.providers.bark.deviceKey YOUR_KEY
+icqq config set alerts.providers.bark.server https://bark.l2cl.link
+
+# 企业微信
+icqq config set alerts.providers.wecom.webhookKey KEY
+
+# 多渠道：分别 set 各 type
+icqq config set alerts.providers.dingtalk.webhook 'https://oapi.dingtalk.com/robot/send?access_token=TOKEN'
+icqq config set alerts.providers.feishu.webhook 'https://open.feishu.cn/open-apis/bot/v2/hook/xxx'
+icqq config set alerts.providers.generic.url https://hooks.example.com/icqq
+
+icqq config set login.http.publicUrl https://qq.example.com
+```
+
+#### 环境变量
+
+| 环境变量 | 说明 |
+|----------|------|
+| `ICQQ_ALERTS_ENABLED` | `true` / `1` 启用 |
+| `ICQQ_ALERT_BARK_KEY` | Bark deviceKey |
+| `ICQQ_ALERT_BARK_SERVER` | Bark server URL |
+| `ICQQ_ALERT_WECOM_WEBHOOK_KEY` | 企业微信 key |
+| `ICQQ_ALERT_DINGTALK_WEBHOOK` | 钉钉 webhook URL |
+| `ICQQ_ALERT_DINGTALK_SECRET` | 钉钉 secret |
+| `ICQQ_ALERT_FEISHU_WEBHOOK` | 飞书 webhook |
+| `ICQQ_ALERT_FEISHU_SECRET` | 飞书 secret |
+| `ICQQ_ALERT_TELEGRAM_BOT_TOKEN` | Telegram Bot Token |
+| `ICQQ_ALERT_TELEGRAM_CHAT_ID` | Telegram Chat ID |
+| `ICQQ_ALERT_PUSHDEER_KEY` | PushDeer pushkey |
+| `ICQQ_ALERT_PUSHDEER_SERVER` | PushDeer server |
+| `ICQQ_ALERT_SERVERCHAN_KEY` | Server酱 sendkey |
+| `ICQQ_ALERT_WEBHOOK_URL` | generic webhook |
+
+#### 行为摘要
+
+- 告警事件：`daemon_ready`、`login_waiting`、`offline_network`、`offline_kickoff`、`online`（默认 15min per-kind 冷却，`alerts.cooldownMs` 可改）
+- `notifyEnabled` = 本机桌面通知；`alerts` = 远程推送，二者独立
+- 需人机验证时进程**不退出**；告警正文**不含** token；`publicUrl/login` → `/login/auth` 粘贴 `daemon.token`
+- 门控 IPC：`login_get_state` / `login_submit` / `login_send_sms`（非 MCP）
 
 ## 多账号
 
@@ -81,6 +149,8 @@ ICQQ_CURRENT_UIN=12345 icqq group send 67890 "hi"
 | 守护进程未运行 | `icqq login -r` 或 `icqq service start` |
 | MCP 端口冲突 | `icqq config set mcp.http.port 0` 后 `icqq service restart` |
 | macOS logout 后服务仍重启 | 检查 `daemon.stopped`；需 `service start` 清除 |
+| 收不到告警 | `icqq config get alerts`；密钥用 env 或 config；`service restart` |
+| 告警无外链 | 设置 `login.http.publicUrl` 为 HTTPS 反代根 URL |
 
 ## 示例
 
