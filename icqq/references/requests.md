@@ -28,6 +28,9 @@ icqq request reject 5e6f7g8h -g -r "群已满"
 
 ```bash
 icqq --json requests    # 待处理好友/群请求列表，含 <flag>
+icqq --json request accept <flag>
+icqq --json request accept <flag> -g    # 同意入群（🔴 高影响，须先确认）
+icqq --json request reject <flag> -g -r "群已满"
 ```
 
-处理请求（`accept`/`reject`）也可用 `--json` 获取操作结果。见 [json.md](./json.md)。
+处理请求前须从 `requests` 输出取得 `<flag>`。见 [json.md](./json.md)。

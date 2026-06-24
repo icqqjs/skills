@@ -94,3 +94,30 @@ icqq config set mcp.http.token "your-secret"
 icqq -u 12345 profile
 icqq --json -u 12345 friend list
 ```
+
+## 脚本化（`--json`）
+
+### 仅交互（代理勿用）
+
+下列命令需 TTY、验证码或逐步向导，**不要**加 `--json` 让代理执行：
+
+- `icqq login`（首次登录、设备锁、滑块）
+- `icqq setup`（依赖安装向导）
+- `icqq service install` / `uninstall`（系统服务安装）
+- `icqq logout`（登出并停守护进程）
+
+快速重连 `icqq login -r` 在无额外验证时通常可非交互；若仍弹出验证，改由用户本机执行。
+
+### 可脚本化示例
+
+```bash
+icqq --json profile
+icqq --json -u 12345 config get mcp
+icqq --json service status
+icqq --json service status 12345
+icqq --json switch 12345          # 仅切换 currentUin，不启动登录向导时
+```
+
+`config set` / `service start|stop|restart` 等变更类也可用 `--json` 看返回体。格式见 [json.md](./json.md)。
+
+**反模式**：对 `login` 加 `--json` 指望代理完成验证码。

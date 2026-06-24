@@ -38,5 +38,15 @@
     "id": 8,
     "prompt": "MCP 里 list_actions 和 send_private_msg 分别怎么用？",
     "expected": "打开 mcp.md + mcp-cli-map.md；discovery 用 icqq_list_actions，invoke 带 user_id+message"
+  },
+  {
+    "id": 9,
+    "prompt": "用 friend chat 给 12345 发一句你好",
+    "expected": "拒绝：friend chat 是交互模式；改用 icqq friend send 12345 \"你好\"，见 messaging.md 反模式"
+  },
+  {
+    "id": 10,
+    "prompt": "脚本里 icqq --json group view 看一下群资料",
+    "expected": "拒绝省略 gid：须 icqq --json group view 67890；无 gid 会进交互选择器，见 json.md"
   }
 ]

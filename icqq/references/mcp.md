@@ -2,6 +2,8 @@
 
 MCP 与 QQ 守护进程**同进程**；需在配置里开启后重启守护进程。
 
+**何时读对照表**：`icqq_invoke` 前查 [mcp-cli-map.md](./mcp-cli-map.md) 确认 action 名、params 与 CLI 等价命令；表由 CLI 仓库自动生成，**勿手改**。
+
 ## 启用
 
 ```bash
