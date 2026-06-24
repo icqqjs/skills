@@ -105,6 +105,13 @@ icqq config set alerts.providers.dingtalk.webhook 'https://oapi.dingtalk.com/rob
 icqq config set alerts.providers.feishu.webhook 'https://open.feishu.cn/open-apis/bot/v2/hook/xxx'
 icqq config set alerts.providers.generic.url https://hooks.example.com/icqq
 
+# 双机互备（A 告警经 B 的 RPC 发 QQ）
+icqq config set alerts.providers.peer.host 192.168.1.10
+icqq config set alerts.providers.peer.port 9100
+icqq config set alerts.providers.peer.token "$(cat ~/.icqq/200/daemon.token)"
+icqq config set alerts.providers.peer.userId 123456789
+icqq config set alerts.providers.peer.groupId 987654321
+
 icqq config set login.http.publicUrl https://qq.example.com
 ```
 
@@ -126,6 +133,11 @@ icqq config set login.http.publicUrl https://qq.example.com
 | `ICQQ_ALERT_PUSHDEER_SERVER` | PushDeer server |
 | `ICQQ_ALERT_SERVERCHAN_KEY` | Server酱 sendkey |
 | `ICQQ_ALERT_WEBHOOK_URL` | generic webhook |
+| `ICQQ_ALERT_PEER_HOST` | peer RPC host |
+| `ICQQ_ALERT_PEER_PORT` | peer RPC port |
+| `ICQQ_ALERT_PEER_TOKEN` | peer RPC token |
+| `ICQQ_ALERT_PEER_USER_ID` | peer 私聊 QQ |
+| `ICQQ_ALERT_PEER_GROUP_ID` | peer 群号 |
 
 #### 行为摘要
 
